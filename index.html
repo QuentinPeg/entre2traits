@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Entre-2-Traits</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/carrousel.css">
+    <link rel="icon" href="../public/img/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
 
 
@@ -16,34 +17,115 @@
 
     <!-- Header -->
     <header>
-        <img src="../img/logo.webp" alt="Logo L'Entre 2 Traits">
+        <img src="../public/img/logo.webp" alt="Logo L'Entre 2 Traits">
     </header>
     <!-- Navigation -->
     <nav>
-        <a href="./index.html">Accueil</a>
-        <a href="../html/atelier.html">Atelier</a>
-        <a href="../html/travaux.html">Travaux d'élèves</a>
-        <a href="../html/interventions.html">Les interventions</a>
-        <a href="../html/parcours.html">Parcours</a>
-        <a href="../html/contact.html">Contact</a>
-        <a href="../html/actus.html">Actus</a>
-        <a href="../html/boutique.html">Boutique</a>
+        <a href="../public/html/index.html">Accueil</a>
+        <a href="../public/html/atelier.html">Atelier</a>
+        <a href="../public/html/travaux.html">Travaux d'élèves</a>
+        <a href="../public/html/interventions.html">Les interventions</a>
+        <a href="../public/html/parcours.html">Parcours</a>
+        <a href="../public/html/contact.html">Contact</a>
+        <a href="../public/html/actus.html">Actus</a>
+        <a href="../public/html/boutique.html">Boutique</a>
         <span class="panier-link"></span>
-        <img src="../img/panier.png" alt="panier" class="panier">
+        <img src="../public/img/panier.png" alt="panier" class="panier">
         <span class="nombre-articles-panier" id="panier-bulle">0</span>
         </span>
     </nav>
 
     <main>
+        <!-- Section principale -->
+        <section class="main-section">
+            <h1>L'Entre-2-Traits</h1>
 
+            <div class="icons">
+                <a href="../public/html/atelier.html"><img src="../public/img/Atelier.gif" alt="Icone Atelier">
+                    <p>L'atelier</p>
+                </a>
+
+                <a href="../public/html/atelier.html"><img src="../public/img/Actualite.gif" alt="Icone Actualités">
+                    <p>Actualités</p>
+                </a>
+
+
+                <a href="../public/html/travaux.html"><img src="../public/img/travaux.gif" alt="Icone Travaux d'élèves">
+                    <p>Travaux d'élèves</p>
+                </a>
+
+
+                <a href="../public/html/interventions.html"> <img src="../public/img/Contact.gif" alt="Icone Contact">
+                    <p>Contact</p>
+                </a>
+
+
+                <a href="../public/html/boutique.html"><img src="../public/img/boutique.gif" alt="Icone Boutique">
+                    <p>La boutique de MAVIF</p>
+                </a>
+            </div>
+
+            <div class="content">
+                <p>Bienvenue sur le site internet de l' Entre 2 Traits. Ambiance conviviale, échange de plaisir lors des
+                    ateliers, en toutes circonstances !</p>
+                <p>Vous trouverez ici toutes les informations nécessaires et des dessins d'élèves !</p>
+
+                <hr>
+
+                <h2>Les infos du moment :</h2>
+                <p>Cette année, l’atelier est partenaire du Pass culture et de la carte Tatoo !</p>
+                <p>
+                    Si vous voulez profitez de ces aventages, je vous inte à venir lors de la semaine d’inscription du 4
+                    au
+                    7 septembre au horaire d’ouverture de l’atelier. Il faut pour celà que votre adhésion à des deux
+                    organisme soit valable !</p>
+            </div>
+            <div id="ndpart">
+
+                <img src="../public/img/message.webp" alt="message aux utilisateurs" id="img_accueil">
+                <div>
+                    <section>
+                        <h5>Inscription et Règlement
+                            en ligne</h2>
+                            <a href="https://www.payasso.fr/entre2traits/inscription" class="lien_s">
+                                <img src="../public/img/carte-bleue-webp.webp" alt="">
+                                <img src="../public/img/picto inscription.webp" alt="">
+                            </a>
+                    </section>
+                    <!-- Carrousel de Travaux d'Élèves -->
+                    <article class="carr">
+                        <div id="carousel1" class="carousel">
+                            <img src="../public/img/Actualite.gif" alt="Image 1">
+                            <img src="../public/img/Atelier.gif" alt="Image 2">
+                            <img src="../public/img/boutique.gif" alt="Image 3">
+                        </div>
+                        <button class="prev" onclick="prevImage('carousel1')">&#10094;</button>
+                        <button class="next" onclick="nextImage('carousel1')">&#10095;</button>
+                    </article>
+
+                    <article class="carr">
+                        <div id="carousel2" class="carousel">
+                            <img src="../public/img/Actualite.gif" alt="Image 1">
+                            <img src="../public/img/Atelier.gif" alt="Image 2">
+                            <img src="../public/img/boutique.gif" alt="Image 3">
+                        </div>
+                        <button class="prev" onclick="prevImage('carousel2')">&#10094;</button>
+                        <button class="next" onclick="nextImage('carousel2')">&#10095;</button>
+                    </article>
+                </div>
+            </div>
+
+
+
+        </section>
     </main>
     <!-- Footer -->
     <footer>
         <p>&copy; 2023 by CREATIVE EVENTS</p>
         <p>Toutes les photos, images, illustrations ou supports visuels sont soumis aux droits d'auteurs.</p>
         <div>
-            <a href="https://www.facebook.com/Entre2Traits"><img src="../img/facebook.webp" alt="Facebook"></a>
-            <a href=".https://www.youtube.com/channel/UCJcNeqQNF889gndHbw6mXfA"><img src="../img/youtube.webp"
+            <a href="https://www.facebook.com/Entre2Traits"><img src="../public/img/facebook.webp" alt="Facebook"></a>
+            <a href=".https://www.youtube.com/channel/UCJcNeqQNF889gndHbw6mXfA"><img src="../public/img/youtube.webp"
                     alt="YouTube"></a>
         </div>
     </footer>
