@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE HTML>
+<lang lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -20,14 +20,14 @@
     </header>
     <!-- Navigation -->
     <nav>
-        <a href="./index.html">Accueil</a>
-        <a href="../html/atelier.html">Atelier</a>
-        <a href="../html/travaux.html">Travaux d'élèves</a>
-        <a href="../html/interventions.html">Les interventions</a>
-        <a href="../html/parcours.html">Parcours</a>
-        <a href="../html/contact.html"><span class="page">Contact</span></a>
-        <a href="../html/actus.html">Actus</a>
-        <a href="../html/boutique.html">Boutique</a>
+        <a href="./index.php">Accueil</a>
+        <a href="../php/atelier.php">Atelier</a>
+        <a href="../php/travaux.php">Travaux d'élèves</a>
+        <a href="../php/interventions.php">Les interventions</a>
+        <a href="../php/parcours.php">Parcours</a>
+        <a href="../php/contact.php"><span class="page">Contact</span></a>
+        <a href="../php/actus.php">Actus</a>
+        <a href="../php/boutique.php">Boutique</a>
         <span class="panier-link"></span>
         <img src="../img/panier.png" alt="panier" class="panier">
         <span class="nombre-articles-panier" id="panier-bulle">0</span>
@@ -84,32 +84,4 @@
 
     </main>
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 by CREATIVE EVENTS</p>
-        <p>Toutes les photos, images, illustrations ou supports visuels sont soumis aux droits d'auteurs.</p>
-        <div>
-            <a href="https://www.facebook.com/Entre2Traits"><img src="../img/facebook.webp" alt="Facebook"></a>
-            <a href=".https://www.youtube.com/channel/UCJcNeqQNF889gndHbw6mXfA"><img src="../img/youtube.webp"
-                    alt="YouTube"></a>
-        </div>
-    </footer>
-    <script>
-        function initMap() {
-            var location = { lat: 43.296482, lng: 5.36978 }; // Coordonnées pour Marseille
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
-                center: location,
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: "L'entre-2-Traits Les Ateliers Graphiques",
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
-
-</body>
-
-</html>
+    <?php include "./footer.php"; ?>

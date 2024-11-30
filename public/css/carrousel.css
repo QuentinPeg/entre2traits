@@ -1,5 +1,5 @@
 /* Style du carrousel */
-.carousel {
+.carrousel {
     display: flex;
     overflow: hidden;
     position: relative;
@@ -25,37 +25,9 @@
 
 }
 
-/* Style du carrousel travaux */
-.carouselt {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    width: 750px;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-.carrt {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    width: 900px;
-    min-width: 300px;
-
-}
-
-.carousel img,
-.carouselt img {
+.carrousel img{
     width: 250px;
-    height: auto;
+    height: 250px;
     object-fit: contain;
     transition: transform 0.5s ease;
 }
@@ -115,7 +87,7 @@
 
 /* Responsivité */
 @media (max-width: 768px) {
-    .carousel {
+    .carrousel {
         max-height: 300px;
     }
 

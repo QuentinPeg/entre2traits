@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE HTML>
+<lang lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -20,14 +20,14 @@
     </header>
     <!-- Navigation -->
     <nav>
-        <a href="./index.html">Accueil</a>
-        <a href="../html/atelier.html">Atelier</a>
-        <a href="../html/travaux.html">Travaux d'élèves</a>
-        <a href="../html/interventions.html">Les interventions</a>
-        <a href="../html/parcours.html">Parcours</a>
-        <a href="../html/contact.html">Contact</a>
-        <a href="../html/actus.html">Actus</a>
-        <a href="../html/boutique.html"><span class="page">Boutique</span></a>
+        <a href="./index.php">Accueil</a>
+        <a href="../php/atelier.php">Atelier</a>
+        <a href="../php/travaux.php">Travaux d'élèves</a>
+        <a href="../php/interventions.php">Les interventions</a>
+        <a href="../php/parcours.php">Parcours</a>
+        <a href="../php/contact.php">Contact</a>
+        <a href="../php/actus.php">Actus</a>
+        <a href="../php/boutique.php"><span class="page">Boutique</span></a>
         <span class="panier-link"></span>
         <img src="../img/panier.png" alt="panier" class="panier">
         <span class="nombre-articles-panier" id="panier-bulle">0</span>
@@ -65,7 +65,7 @@
             <img src="${article.image_url}" alt="${article.nom}">
             <h2>${article.nom}</h2>
             <p>${article.prix} €</p>
-            <a href="produit.html?id=${article.id}">Voir le produit</a>
+            <a href="produit.php?id=${article.id}">Voir le produit</a>
         `;
                     articlesGrid.appendChild(articleDiv);
                 });
@@ -79,15 +79,4 @@
 
     </main>
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 by CREATIVE EVENTS</p>
-        <p>Toutes les photos, images, illustrations ou supports visuels sont soumis aux droits d'auteurs.</p>
-        <div>
-            <a href="https://www.facebook.com/Entre2Traits"><img src="../img/facebook.webp" alt="Facebook"></a>
-            <a href=".https://www.youtube.com/channel/UCJcNeqQNF889gndHbw6mXfA"><img src="../img/youtube.webp"
-                    alt="YouTube"></a>
-        </div>
-    </footer>
-</body>
-
-</html>
+    <?php include "./footer.php"; ?>
