@@ -49,7 +49,9 @@ $pageTitle = isset($menuItems[$currentPage]) ? "L'Entre-2-Traits | " . $menuItem
             }
         }
         ?>
-        <a href="./manager.php" id="manager-link" style="display: none;">Manager</a>
+        <a href="./manager.php" id="manager-link" style="display: none; background-color: #656d76">
+            <span class='page'>Manager</span>
+        </a>
         <span class="panier-link"></span>
         <img src="../img/panier.png" alt="panier" class="panier">
         <span class="nombre-articles-panier" id="panier-bulle">0</span>

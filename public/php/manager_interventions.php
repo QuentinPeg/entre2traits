@@ -1,6 +1,7 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
+<link rel="stylesheet" href="../css/manager.css">
 
 <main>
     <h1>Manger les interventions</h1>

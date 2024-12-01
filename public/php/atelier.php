@@ -1,6 +1,8 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
+<link rel="stylesheet" href="../css/atelier.css">
+
 <main>
     <section class="atelier-info">
         <h4>DESSIN / MANGA / PEINTURE / BANDE DESSINEE ET AUTRES EXPERIENCES</h4>

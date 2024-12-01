@@ -1,6 +1,8 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
+<link rel="stylesheet" href="../css/contact.css">
+
 <main>
 
     <section id="main-contact">

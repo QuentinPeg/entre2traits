@@ -1,6 +1,7 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
+<link rel="stylesheet" href="../css/parcours.css">
 
 <main>
 

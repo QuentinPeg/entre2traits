@@ -1,6 +1,7 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
+
 <main>
 
     <!-- Section principale -->

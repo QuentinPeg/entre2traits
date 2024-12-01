@@ -7,6 +7,11 @@ body {
 
 main {
     padding: 0;
+    background-image: url(../img/font.png);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: contain;
+
 }
 
 /* Header */
@@ -67,10 +72,6 @@ nav>span {
 .main-section {
     text-align: center;
     padding: 50px;
-    background-image: url(../img/font.png);
-    background-repeat: repeat;
-    background-position: center;
-    background-size: contain;
 }
 
 .main-section h1 {
