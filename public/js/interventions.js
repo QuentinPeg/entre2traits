@@ -32,7 +32,7 @@ async function displayArticles(articles) {
             day: 'numeric'
         });
 
-        const articlephp = `
+        const articleHTML = `
     <div class="atelier">
         <div>
             <img src="${article.image_url}" class="img-atelier" alt="Image de l'atelier">
@@ -47,7 +47,7 @@ async function displayArticles(articles) {
 `;
 
         // Ajouter chaque article dans le main
-        main.insertAdjacentHTML('beforeend', articlephp);
+        main.insertAdjacentHTML('beforeend', articleHTML);
     }
 }
 
