@@ -47,7 +47,7 @@ async function displayArticles(articles) {
 `;
 
         // Ajouter chaque article dans le main
-        main.insertAdjacentphp('beforeend', articlephp);
+        main.insertAdjacentHTML('beforeend', articlephp);
     }
 }
 
