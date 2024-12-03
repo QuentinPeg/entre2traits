@@ -1,85 +1,163 @@
-<!-- Header -->
-
 <?php include "./header.php"; ?>
 
 <main>
-
-    <!-- Section principale -->
     <section class="main-section">
-        <h1>L'Entre-2-Traits</h1>
+        <h1 id="title">Chargement...</h1>
 
-        <div class="icons">
-            <a href="../php/atelier.php"><img src="../img/Atelier.gif" alt="Icone Atelier">
-                <p>L'atelier</p>
-            </a>
-            <a href="../php/atelier.php"><img src="../img/Actualite.gif" alt="Icone Actualités">
-                <p>Actualités</p>
-            </a>
-            <a href="../php/travaux.php"><img src="../img/travaux.gif" alt="Icone Travaux d'élèves">
-                <p>Travaux d'élèves</p>
-            </a>
-            <a href="../php/interventions.php"> <img src="../img/Contact.gif" alt="Icone Contact">
-                <p>Contact</p>
-            </a>
-            <a href="../php/boutique.php"><img src="../img/boutique.gif" alt="Icone Boutique">
-                <p>La boutique de MAVIF</p>
-            </a>
+        <div class="icons" id="icons">
+            <!-- Les icônes seront injectées ici -->
         </div>
 
         <div class="content">
-            <p>Bienvenue sur le site internet de l'Entre 2 Traits. Ambiance conviviale, échange de plaisir lors des
-                ateliers, en toutes circonstances !</p>
-            <p>Vous trouverez ici toutes les informations nécessaires et des dessins d'élèves !</p>
-
+            <p id="welcome_message">Chargement...</p>
             <hr>
-
             <h2>Les infos du moment :</h2>
-            <p>Cette année, l’atelier est partenaire du Pass culture et de la carte Tatoo !</p>
-            <p>
-                Si vous voulez profitez de ces avantages, je vous invite à venir lors de la semaine d’inscription du 4
-                au 7 septembre aux horaires d’ouverture de l’atelier. Il faut pour cela que votre adhésion à ces deux
-                organismes soit valable !
-            </p>
+            <p id="current_info">Chargement...</p>
         </div>
 
         <div id="ndpart">
-            <img src="../img/message.webp" alt="message aux utilisateurs" id="img_accueil">
+            <img src="" alt="Message aux utilisateurs" id="img_accueil">
             <div>
                 <section>
                     <h5>Inscription et Règlement en ligne</h5>
-                    <a href="https://www.payasso.fr/entre2traits/inscription" class="lien_s">
-                        <img src="../img/carte-bleue-webp.webp" alt="">
-                        <img src="../img/picto inscription.webp" alt="">
+                    <a id="inscription_link" href="#" class="lien_s">
+                        <img src="../img/carte-bleue-webp.webp" alt="Carte de paiement">
+                        <img src="../img/picto_inscription.webp" alt="Picto inscription">
                     </a>
                 </section>
 
                 <!-- Carrousel de Travaux d'Élèves -->
                 <article class="carr">
                     <div id="carrousel1" class="carrousel index-page">
-                        <img src="../img/2-euros-E2T-2016 copie.webp" alt="Image 1">
-                        <img src="../img/Atelier.gif" alt="Image 2">
-                        <img src="../img/boutique.gif" alt="Image 3">
+                        <!-- Images du carrousel 1 -->
                     </div>
                     <button class="prev">&#10094;</button>
                     <button class="next">&#10095;</button>
+
                 </article>
 
                 <article class="carr">
                     <div id="carrousel2" class="carrousel index-page">
-                        <img src="../img/Actualite.gif" alt="Image 1">
-                        <img src="../img/Atelier.gif" alt="Image 2">
-                        <img src="../img/boutique.gif" alt="Image 3">
+                        <!-- Images du carrousel 2 -->
                     </div>
                     <button class="prev">&#10094;</button>
                     <button class="next">&#10095;</button>
-                </article>
 
+                </article>
             </div>
         </div>
-
     </section>
 </main>
 
-<!-- Footer -->
-
 <?php include "./footer.php"; ?>
+
+
+<script>
+    async function loadAccueilContent() {
+        try {
+            const { data, error } = await supabaseClient
+                .from('accueil_content')
+                .select('*')
+                .single();
+
+            if (error) {
+                console.error("Erreur lors du chargement des données :", error);
+                return;
+            }
+
+            // Injecter les données dynamiques dans la page
+            document.getElementById('title').textContent = data.welcome_title;
+            document.getElementById('welcome_message').textContent = data.welcome_message;
+            document.getElementById('current_info').textContent = data.current_info;
+            document.getElementById('img_accueil').src = data.welcome_img;
+
+            // Icônes dynamiques
+            const iconsHtml = `
+                    <a href="${data.icon1_link}">
+                        <img src="${data.icon1_img}" alt="Icone Atelier">
+                        <p>${data.icon1_text}</p>
+                    </a>
+                    <a href="${data.icon2_link}">
+                        <img src="${data.icon2_img}" alt="Icone Actualités">
+                        <p>${data.icon2_text}</p>
+                    </a>
+                    <a href="${data.icon3_link}">
+                        <img src="${data.icon3_img}" alt="Icone Travaux d'élèves">
+                        <p>${data.icon3_text}</p>
+                    </a>
+                    <a href="${data.icon4_link}">
+                        <img src="${data.icon4_img}" alt="Icone Contact">
+                        <p>${data.icon4_text}</p>
+                    </a>
+                    <a href="${data.icon5_link}">
+                        <img src="${data.icon5_img}" alt="Icone Boutique">
+                        <p>${data.icon5_text}</p>
+                    </a>
+                `;
+            document.getElementById('icons').innerHTML = iconsHtml;
+
+            // Carrousels dynamiques
+            let carrousel1Images = [];
+            try {
+                // Tenter de parser comme JSON
+                carrousel1Images = JSON.parse(data.carrousel1_images);
+            } catch (error) {
+                // Si erreur, tenter de traiter comme texte séparé par des virgules
+                carrousel1Images = data.carrousel1_images.split(',');
+            }
+
+            // Générer le HTML
+            const carrousel1Html = carrousel1Images
+                .map(img => `<img src="${img.trim()}" alt="Carrousel 1">`)
+                .join('');
+            document.getElementById('carrousel1').innerHTML = carrousel1Html;
+
+            let carrousel2Images = [];
+            try {
+                carrousel2Images = JSON.parse(data.carrousel2_images);
+            } catch (error) {
+                carrousel2Images = data.carrousel2_images.split(',');
+            }
+
+            const carrousel2Html = carrousel2Images
+                .map(img => `<img src="${img.trim()}" alt="Carrousel 2">`)
+                .join('');
+            document.getElementById('carrousel2').innerHTML = carrousel2Html;
+
+        } catch (error) {
+            console.error("Une erreur s'est produite :", error);
+        }
+    }
+
+    // Charger les données lors du chargement de la page
+    loadAccueilContent();
+
+    function loadScriptDynamically(src, callback) {
+        const script = document.createElement('script'); // Crée une balise <script>
+        script.src = src; // Spécifie le chemin du script
+        script.type = 'text/javascript'; // Définit le type
+        script.async = true; // Permet un chargement asynchrone
+
+        // Exécute une fonction lorsque le script est chargé
+        script.onload = () => {
+            console.log(`Script ${src} chargé avec succès.`);
+            if (callback) callback();
+        };
+
+        // Gère les erreurs de chargement
+        script.onerror = () => {
+            console.error(`Erreur lors du chargement du script ${src}`);
+        };
+
+        // Ajoute le script dans le DOM
+        document.head.appendChild(script); // ou document.body.appendChild(script);
+    }
+
+    setTimeout(() => {
+        loadScriptDynamically('../js/carrousel.js', () => {
+            console.log('Le script carrousel.js est prêt après 10 secondes.');
+            // Vous pouvez appeler des fonctions ou initialiser des éléments ici
+        });
+    }, 5000); // 5 000 ms = 5 secondes
+
+</script>

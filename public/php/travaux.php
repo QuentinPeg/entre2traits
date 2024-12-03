@@ -8,7 +8,7 @@
         <h2>Travaux d'élèves</h2>
 
         <article class="carr">
-            <div id="carrousel1" class="carrousel index-page">
+            <div id="carrousel4" class="carrousel index-page">
                 <img src="../img/2-euros-E2T-2016 copie.webp" alt="Image 1">
                 <img src="../img/Atelier.gif" alt="Image 2">
                 <img src="../img/boutique.gif" alt="Image 3">

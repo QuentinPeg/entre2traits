@@ -8,7 +8,7 @@
     </div>
 </footer>
 
-<script src="../js/carrousel.js"></script>
+<script src="../js/carrousel.js" defer></script>
 <script src="https://unpkg.com/@supabase/supabase-js"></script>
 <script src="../js/supabase.js"></script>
 </body>
