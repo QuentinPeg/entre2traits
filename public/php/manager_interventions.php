@@ -1,16 +1,15 @@
 <!-- Header -->
 
 <?php include "./header.php"; ?>
-<link rel="stylesheet" href="../css/manager.css">
+<link rel="stylesheet" href="../css/manager_interventions.css">
 
 <main>
-    <h1>Manger les interventions</h1>
+    <h1>Gestion des interventions</h1>
     <a href="./manager.php"><button>Retour</button></a>
     <!-- Formulaire pour ajouter un article -->
     <form id="article-form">
         <h2>Ajouter un Article dans interventions</h2>
         <input type="text" id="article-title" placeholder="Titre" required>
-        <input type="date" id="article-date" placeholder="Date de l'article" required>
 
         <!-- Sélection d'image existante -->
         <label for="article-image">Sélectionner une image</label>

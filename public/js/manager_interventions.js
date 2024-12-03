@@ -68,11 +68,11 @@ document.getElementById('article-image').addEventListener('change', function () 
 });
 
 // Fonction pour ajouter un nouvel article
-async function addArticle(title, description, link, date, imageUrl) {
+async function addArticle(title, description, link, imageUrl) {
     try {
         const { data, error } = await supabaseClient
             .from('articles')
-            .insert([{ image_url: imageUrl, titre: title, description: description, lien: link, date: date }]);
+            .insert([{ image_url: imageUrl, titre: title, description: description, lien: link }]);
 
         if (error) throw error;
 
@@ -120,7 +120,6 @@ document.getElementById('article-form').addEventListener('submit', async (event)
     event.preventDefault();
 
     const title = document.getElementById('article-title').value;
-    const date = document.getElementById('article-date').value;
     const description = document.getElementById('article-description').value;
     const link = document.getElementById('article-link').value;
     const imageSelect = document.getElementById('article-image');
@@ -129,8 +128,8 @@ document.getElementById('article-form').addEventListener('submit', async (event)
 
     const imageUrl = imageSelect.value; // Récupère directement la valeur sélectionnée
 
-    if (title && date && description && link && imageUrl) {
-        await addArticle(title, description, link, date, imageUrl);
+    if (title && description && link && imageUrl) {
+        await addArticle(title, description, link, imageUrl);
     } else {
         document.getElementById('article-status').textContent = 'Veuillez remplir tous les champs.';
         console.warn('Tous les champs ne sont pas remplis.');

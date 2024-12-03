@@ -24,19 +24,12 @@ async function displayArticles(articles) {
             continue;
         }
 
-        // Formatage de la date
-        const dateObj = new Date(article.date);
-        const formattedDate = dateObj.toLocaleDateString('fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+
 
         const articleHTML = `
     <div class="atelier">
         <div>
             <img src="${article.image_url}" class="img-atelier" alt="Image de l'atelier">
-            <div class="date-atelier">${formattedDate}</div>
         </div>
         <div>
             <h2 class="titre-atelier">${article.titre}</h2>
