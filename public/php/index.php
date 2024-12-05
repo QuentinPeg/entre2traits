@@ -29,19 +29,28 @@
                 <!-- Carrousel de Travaux d'Élèves -->
                 <article class="carr">
                     <div id="carrousel1" class="carrousel index-page">
-                        <!-- Images du carrousel 1 -->
+                        <!-- Grande image -->
+                        <div class="carrousel-large">
+                            <img id="large-image-1" src="../img/picto_inscription.webp" alt="Grande Image Carrousel 1">
+                        </div>
+                        <!-- Miniatures -->
+                        <div class="carrousel-small">
+                            <!-- Les miniatures seront injectées ici -->
+                        </div>
                     </div>
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
-
                 </article>
 
                 <article class="carr">
                     <div id="carrousel2" class="carrousel index-page">
-                        <!-- Images du carrousel 2 -->
+                        <!-- Grande image -->
+                        <div class="carrousel-large">
+                            <img id="large-image-2" src="../img/picto_inscription.webp" alt="Grande Image Carrousel 2">
+                        </div>
+                        <!-- Miniatures -->
+                        <div class="carrousel-small">
+                            <!-- Les miniatures seront injectées ici -->
+                        </div>
                     </div>
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
 
                 </article>
             </div>
@@ -50,7 +59,6 @@
 </main>
 
 <?php include "./footer.php"; ?>
-
 
 <script>
     async function loadAccueilContent() {
@@ -72,44 +80,47 @@
             document.getElementById('img_accueil').src = data.welcome_img;
 
             // Icônes dynamiques
-            const iconsHtml = `
-                    <a href="${data.icon1_link}">
-                        <img src="${data.icon1_img}" alt="Icone Atelier">
-                        <p>${data.icon1_text}</p>
-                    </a>
-                    <a href="${data.icon2_link}">
-                        <img src="${data.icon2_img}" alt="Icone Actualités">
-                        <p>${data.icon2_text}</p>
-                    </a>
-                    <a href="${data.icon3_link}">
-                        <img src="${data.icon3_img}" alt="Icone Travaux d'élèves">
-                        <p>${data.icon3_text}</p>
-                    </a>
-                    <a href="${data.icon4_link}">
-                        <img src="${data.icon4_img}" alt="Icone Contact">
-                        <p>${data.icon4_text}</p>
-                    </a>
-                    <a href="${data.icon5_link}">
-                        <img src="${data.icon5_img}" alt="Icone Boutique">
-                        <p>${data.icon5_text}</p>
-                    </a>
-                `;
+            const iconsHtml = `  
+                <a href="${data.icon1_link}">
+                    <img src="${data.icon1_img}" alt="Icone Atelier">
+                    <p>${data.icon1_text}</p>
+                </a>
+                <a href="${data.icon2_link}">
+                    <img src="${data.icon2_img}" alt="Icone Actualités">
+                    <p>${data.icon2_text}</p>
+                </a>
+                <a href="${data.icon3_link}">
+                    <img src="${data.icon3_img}" alt="Icone Travaux d'élèves">
+                    <p>${data.icon3_text}</p>
+                </a>
+                <a href="${data.icon4_link}">
+                    <img src="${data.icon4_img}" alt="Icone Contact">
+                    <p>${data.icon4_text}</p>
+                </a>
+                <a href="${data.icon5_link}">
+                    <img src="${data.icon5_img}" alt="Icone Boutique">
+                    <p>${data.icon5_text}</p>
+                </a>
+            `;
             document.getElementById('icons').innerHTML = iconsHtml;
 
             // Carrousels dynamiques
             let carrousel1Images = [];
             try {
-                // Tenter de parser comme JSON
                 carrousel1Images = JSON.parse(data.carrousel1_images);
             } catch (error) {
-                // Si erreur, tenter de traiter comme texte séparé par des virgules
                 carrousel1Images = data.carrousel1_images.split(',');
             }
 
-            // Générer le HTML
-            const carrousel1Html = carrousel1Images
-                .map(img => `<img src="${img.trim()}" alt="Carrousel 1">`)
-                .join('');
+            // Injecter la grande image et les miniatures dans carrousel 1
+            const carrousel1Html = `
+            <div class="carrousel-large">
+                <img id="large-image-1" src="${carrousel1Images[0].trim()}" alt="Grande Image Carrousel 1">
+            </div>
+            <div class="carrousel-small">
+                ${carrousel1Images.slice(1).map(img => `<img class="thumbnail" src="${img.trim()}" alt="Miniature Carrousel 1">`).join('')}
+            </div>
+        `;
             document.getElementById('carrousel1').innerHTML = carrousel1Html;
 
             let carrousel2Images = [];
@@ -119,45 +130,65 @@
                 carrousel2Images = data.carrousel2_images.split(',');
             }
 
-            const carrousel2Html = carrousel2Images
-                .map(img => `<img src="${img.trim()}" alt="Carrousel 2">`)
-                .join('');
+            // Injecter la grande image et les miniatures dans carrousel 2
+            const carrousel2Html = `
+            <div class="carrousel-large">
+                <img id="large-image-2" src="${carrousel2Images[0].trim()}" alt="Grande Image Carrousel 2">
+            </div>
+            <div class="carrousel-small">
+                ${carrousel2Images.slice(1).map(img => `<img class="thumbnail" src="${img.trim()}" alt="Miniature Carrousel 2">`).join('')}
+            </div>
+        `;
             document.getElementById('carrousel2').innerHTML = carrousel2Html;
+
+            // Fonction pour changer l'image principale de manière fluide
+            function changeImage(carrouselId, images) {
+                const carrousel = document.getElementById(carrouselId);
+                const largeImage = carrousel.querySelector('.carrousel-large img');
+                const thumbnails = carrousel.querySelectorAll('.carrousel-small .thumbnail');
+                let currentIndex = 0;
+
+                function updateCarrousel() {
+                    // Appliquer une animation de fondu à l'image principale
+                    largeImage.classList.add('fade-out');
+
+                    // Attendre que l'animation soit terminée avant de changer l'image
+                    setTimeout(() => {
+                        // Mettre à jour l'image principale
+                        currentIndex = (currentIndex + 1) % images.length;
+                        largeImage.src = images[currentIndex].trim();
+                        largeImage.classList.remove('fade-out');
+
+                        // Mettre à jour les miniatures
+                        thumbnails.forEach((thumbnail, index) => {
+                            const thumbnailIndex = (currentIndex + index + 1) % images.length;
+                            thumbnail.src = images[thumbnailIndex].trim();
+                        });
+                    }, 500); // Temps de l'animation (0.5s)
+                }
+
+                // Défilement automatique toutes les 5 secondes
+                setInterval(updateCarrousel, 5000);
+            }
+            // Appliquer le défilement fluide aux deux carrousels
+            changeImage('carrousel1', carrousel1Images);
+            changeImage('carrousel2', carrousel2Images);
+
 
         } catch (error) {
             console.error("Une erreur s'est produite :", error);
         }
     }
 
-    // Charger les données lors du chargement de la page
     loadAccueilContent();
 
-    function loadScriptDynamically(src, callback) {
-        const script = document.createElement('script'); // Crée une balise <script>
-        script.src = src; // Spécifie le chemin du script
-        script.type = 'text/javascript'; // Définit le type
-        script.async = true; // Permet un chargement asynchrone
+    // Changer l'image principale du carrousel lorsqu'on clique sur une miniature
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('thumbnail')) {
+            const largeImage = e.target.closest('.carrousel').querySelector('.carrousel-large img');
+            largeImage.src = e.target.src;
+        }
+    });
 
-        // Exécute une fonction lorsque le script est chargé
-        script.onload = () => {
-            console.log(`Script ${src} chargé avec succès.`);
-            if (callback) callback();
-        };
-
-        // Gère les erreurs de chargement
-        script.onerror = () => {
-            console.error(`Erreur lors du chargement du script ${src}`);
-        };
-
-        // Ajoute le script dans le DOM
-        document.head.appendChild(script); // ou document.body.appendChild(script);
-    }
-
-    setTimeout(() => {
-        loadScriptDynamically('../js/carrousel.js', () => {
-            console.log('Le script carrousel.js est prêt après 10 secondes.');
-            // Vous pouvez appeler des fonctions ou initialiser des éléments ici
-        });
-    }, 5000); // 5 000 ms = 5 secondes
 
 </script>

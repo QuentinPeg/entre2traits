@@ -1,7 +1,9 @@
 /* Style du carrousel */
 .carrousel {
     display: flex;
-    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: 250px;
     max-width: 1200px;
@@ -10,26 +12,47 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-.carr {
+.carrousel-large {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    width: 250px;
-    min-width: 300px;
-
+    transition: transform 0.5s ease-in-out;
+    /* Défilement fluide */
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    /* Masque les images qui dépassent */
 }
 
 .carrousel img {
     min-width: 250px;
     max-height: 250px;
+    min-height: 250px;
     object-fit: contain;
     transition: transform 0.5s ease;
+}
+
+.carrousel-small {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.carrousel-small .thumbnail {
+    min-width: 80px;
+    min-height: 80px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carrousel-small .thumbnail {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carrousel-small .thumbnail:hover {
+    transform: scale(1.1);
 }
 
 /* Styles pour les flèches */
@@ -64,36 +87,9 @@
     right: 20px;
 }
 
-/* Ajout d'une pagination sous le carrousel */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.pagination span {
-    height: 12px;
-    width: 12px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.pagination span.active {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
 /* Responsivité */
 @media (max-width: 768px) {
-    .carrousel {
+    .carrousel-large img {
         max-height: 300px;
-    }
-
-    .prev,
-    .next {
-        padding: 10px;
-        top: 45%;
     }
 }

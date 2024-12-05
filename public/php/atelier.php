@@ -9,15 +9,18 @@
 
         <div class="atelier-left">
             <article class="carr">
-                <div id="carrousel3" class="carrousel">
-                    <img src="../img/Actualite.gif" alt="Image 1">
-                    <img src="../img/Atelier.gif" alt="Image 2">
-                    <img src="../img/boutique.gif" alt="Image 3">
+                <div id="carrousel3" class="carrousel index-page">
+                    <!-- Grande image -->
+                    <div class="carrousel-large">
+                        <img id="large-image-3" src="../img/picto_inscription.webp" alt="Grande Image Carrousel 3">
+                    </div>
+                    <!-- Miniatures -->
+                    <div class="carrousel-small">
+                        <!-- Les miniatures seront injectées ici -->
+                    </div>
                 </div>
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </article>
 
+            </article>
 
             <h2>L'atelier :</h2>
             <p>J'ai une approche <strong>ludique</strong> dans mes ateliers.</p>
