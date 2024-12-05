@@ -6,8 +6,11 @@
 <main>
     <h1>Page du manager</h1>
     <div class="deux_boutons">
-        <a href="./manager_Accueil.php"><button>Modifier l'accueil</button></a>
-        <a href="./manager_interventions.php"><button>Modifier les interventions</button></a>
+        <a href="./manager_Accueil.php"><button>Modifier la page d'accueil</button></a>
+        <a href="./manager_interventions.php"><button>Modifier la page d'interventions</button></a>
+    </div>
+    <div class="deux_boutons">
+        <a href="./manager_atelier.php"><button>Modifier la page atelier</button></a>
     </div>
 
 
