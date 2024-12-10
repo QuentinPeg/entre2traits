@@ -1,5 +1,17 @@
 /* Reset de base */
-body, h1, h2, h3, h4, p, ul, li, img, article, div, section, main {
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+img,
+article,
+div,
+section,
+main {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,7 +44,8 @@ main {
     max-width: 1200px;
 }
 
-.atelier-left, .atelier-right {
+.atelier-left,
+.atelier-right {
     flex: 1;
     min-width: 300px;
 }
@@ -77,51 +90,25 @@ ul li {
     margin-bottom: 8px;
 }
 
-/* Carrousel */
-.carrousel {
-    margin-bottom: 20px;
-}
-
-.carrousel-large img {
-    width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-    height: 300px;
-}
-
-.carrousel-small {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    overflow-x: auto;
-    padding: 10px 0;
-}
-
-.carrousel-small img {
-    width: 60px;
-    height: 60px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: border-color 0.3s;
-}
-
-.carrousel-small img:hover {
-    border-color: #555;
+#atelier-location {
+    color: #08046c;
+    font-weight: bold;
 }
 
 /* Horaires et tarifs */
-.horaires, .tarifs {
+.horaires,
+.tarifs {
     margin-bottom: 20px;
 }
 
-.horaires ul, .tarifs ul {
+.horaires ul,
+.tarifs ul {
     list-style: none;
     padding: 0;
 }
 
-.horaires ul li, .tarifs ul li {
+.horaires ul li,
+.tarifs ul li {
     font-size: 1rem;
     padding: 10px;
     background: #f9f9f9;
@@ -139,7 +126,9 @@ ul li {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .atelier-left, .atelier-right {
+
+    .atelier-left,
+    .atelier-right {
         padding: 0;
         border: none;
     }

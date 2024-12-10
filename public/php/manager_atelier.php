@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
                 <div class="atelier-form">
                     <label for="titre">Titre de l'atelier :</label>
                     <input type="text" id="titre" name="titre"><br>
-
+                    <p style="color:red">si on veux que des mots pointent vers une page (ex : contact vers la page contact me redemander)</p>
                     <label for="description">Description :</label>
                     <textarea id="description" name="description" rows="4"></textarea><br>
 
@@ -79,11 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
                         <p style="color:red">Séparé les liens d'images par des "<span style="font:bold;">,</span>" dans
                             le carrousel</p>
                         <div id="contient_carrousel">
-                            <div class="carrousel" style="display :none;">
-                                <!--EST LA POUR EMPECHER UN BUG, N'APPARAIT PAS-->
-                                <label for="carrousel_images">Est juste la pour empêche de bug</label>
-                                <textarea id="carrousel_images" name="carrousel_images" rows="3"></textarea>
-                            </div>
                             <div class="carrousel">
                                 <label for="carrousel3_images">Images Carrousel (séparées par des virgules) :</label>
                                 <textarea id="carrousel3_images" name="carrousel3_images" rows="3"></textarea>
@@ -120,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
                         $imageName = basename($image);
                         echo "<div class='image-item'>";
                         echo "<img src='" . $image . "' alt='Image' class='img-preview'>";
-                        echo "<p><strong>Lien:</strong> " . $image . "</p>";
+                        echo "<p><strong>Lien:</strong> <span class='copy-link' data-clipboard='" . $image . "'>" . $image . "</span></p>";
                         echo "</div>";
                     }
                     ?>
@@ -129,10 +124,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
             </div>
         </section>
     </main>
+    <div id="toast"></div>
 
     <?php include "./footer.php"; ?>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll('.copy-link');
+            const toast = document.getElementById('toast');
+
+            function showToast(message) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000); // Afficher le toast pendant 2 secondes
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    const textToCopy = link.getAttribute('data-clipboard');
+                    navigator.clipboard.writeText(textToCopy)
+                        .then(() => {
+                            showToast(`Lien copié: ${textToCopy}`);
+                        })
+                        .catch(err => {
+                            console.error('Erreur lors de la copie dans le presse-papiers: ', err);
+                            showToast('Échec de la copie dans le presse-papiers.');
+                        });
+                });
+            });
+        });
+
         let currentRecordId = null;
 
         async function loadAtelierContent() {
@@ -246,6 +269,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
 
         document.getElementById('form_Atelier').addEventListener('submit', updateAtelierContent);
     </script>
+
 </body>
 
 </html>

@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="../css/atelier.css">
 
 <main>
+    <h4 id="atelier-title">Chargement...</h4>
+    <h2>L'atelier, les horaires et les tarifs.</h2>
     <section class="atelier-info">
-        <h4 id="atelier-title">Chargement...</h4>
-
         <div class="atelier-left">
             <article class="carr">
                 <div id="carrousel3" class="carrousel index-page">
@@ -46,6 +46,16 @@
 <?php include "./footer.php"; ?>
 
 <script>
+    function cleanText(input) {
+        // Supprimer les caractères invisibles
+        input = input.replace(/&ZeroWidthSpace;/g, '');
+        // Remplacer plusieurs <br> consécutifs par un seul
+        // Transformer les sauts de ligne en <br>
+        input = input.replace(/\n/g, '<br>');
+        input = input.replace(/(<br\s*\/?>\s*){2,}/g, '<br>');
+
+        return input.trim();
+    }
     async function loadAtelierContent() {
         try {
             const { data, error } = await supabaseClient
@@ -60,8 +70,20 @@
 
             // Injecter les données dans les éléments HTML
             document.getElementById('atelier-title').textContent = data.titre; // Titre de l'atelier
-            document.getElementById('atelier-description').textContent = data.description; // Description de l'atelier
-            document.getElementById('atelier-location').textContent = data.adresse; // Localisation
+
+
+
+            // Injecter la description
+            if (data.description) {
+                // Nettoyer et injecter la description
+                const atelierDescription = document.getElementById('atelier-description');
+                atelierDescription.innerHTML = cleanText(data.description);
+            } else {
+                console.error("Description non disponible dans les données.");
+            }
+
+            data.adresse = data.adresse.replace(/,/g, "<br>");
+            document.getElementById('atelier-location').innerHTML = data.adresse;
 
             // Injecter les horaires - Vérifier si les données existent avant de les traiter
             if (data.horaires) {
@@ -71,13 +93,20 @@
                 document.getElementById('horaires-list').innerHTML = '<li>Aucun horaire disponible</li>';
             }
 
-            // Injecter les tarifs - Vérifier si les données existent avant de les traiter
+
             if (data.tarifs) {
-                const tarifsListHtml = data.tarifs.split(';').map(item => `<li>${item}</li>`).join('');
+                data.tarifs = cleanText(data.tarifs);
+
+                let tarifsListHtml = data.tarifs.split(';').map(item => `<li>${item}</li>`).join('');
+
+                // Remplacer <li><br> par <li> si des retours à la ligne existent
+                tarifsListHtml = tarifsListHtml.replace(/<li>\s*<br>\s*/g, '<li>');
+
                 document.getElementById('tarifs-list').innerHTML = tarifsListHtml;
             } else {
                 document.getElementById('tarifs-list').innerHTML = '<li>Aucun tarif disponible</li>';
             }
+
 
             // Carrousels dynamiques
             let carrousel3Images = [];
@@ -103,6 +132,8 @@
             </div>
         `;
             document.getElementById('carrousel3').innerHTML = carrousel3Html;
+            changeImage('carrousel3', carrousel3Images);
+
 
         } catch (error) {
             console.error("Une erreur s'est produite :", error);
