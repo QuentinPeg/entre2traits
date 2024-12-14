@@ -8,6 +8,6 @@ supabaseClient.auth.onAuthStateChange(async (event, session) => {
     const user = session?.user;  // Récupérer l'utilisateur connecté à partir de la session
 
     if (user) {
-        document.getElementById('manager-link').style.display = 'block';
+        document.getElementById('manager-link').style.display = 'inline-block';
     }
 });

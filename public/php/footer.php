@@ -11,6 +11,22 @@
 <script src="../js/carrousel.js" defer></script>
 <script src="https://unpkg.com/@supabase/supabase-js"></script>
 <script src="../js/supabase.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuItems = document.getElementById('menu-items');
+        const menuClose = document.getElementById('menu-close');
+
+        menuToggle.addEventListener('click', () => {
+            menuItems.classList.toggle('show');
+        });
+
+        menuClose.addEventListener('click', () => {
+            menuItems.classList.remove('show');
+        });
+    });
+</script>
+
 </body>
 
 </html>

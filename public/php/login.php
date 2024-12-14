@@ -8,13 +8,13 @@
     <h1>Connexion</h1>
     <form id="login-form">
         <div>
-            <div>
+            <div class="col">
                 <label for="email">Email</label>
                 <input type="email" id="email" required placeholder="Email">
             </div>
-            <div>
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" required placeholder="Mot de passe">
+            <div class="col">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" required placeholder="Mot de passe">
             </div>
         </div>
         <button type="submit">Se connecter</button>

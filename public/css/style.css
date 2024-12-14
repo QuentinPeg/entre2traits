@@ -160,3 +160,163 @@ button:hover {
     justify-content: center;
     gap: 50px;
 }
+#menu-toggle, #menu-close {
+    display: none;
+}
+
+#menu-items{
+    display: flex;
+    flex-direction: row;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+
+    /* Body */
+    body {
+        font-size: 16px;
+    }
+
+    /* Header */
+    header {
+        padding: 15px;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    /* Navigation */
+    #menu-toggle {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: block;
+        margin: 10px;
+    }
+
+    #menu-items {
+        display: none;
+        flex-direction: column;
+        background-color: #264b7a;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    #menu-items.show {
+        display: flex;
+    }
+
+    nav a {
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        border-bottom: 1px solid #1a3b60;
+    }
+
+    nav>span {
+        width: 40px;
+    }
+
+    .panier-container {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .panier {
+        width: 40px;
+    }
+
+    .nombre-articles-panier {
+        background-color: red;
+        color: white;
+        font-size: 14px;
+        border-radius: 50%;
+        padding: 2px 6px;
+        position: relative;
+        top: -10px;
+        left: 10px;
+    }
+
+    /* Section principale */
+    .main-section {
+        padding: 20px;
+    }
+
+    .main-section h1 {
+        font-size: 2em;
+    }
+
+    #img_accueil {
+        width: 100%;
+    }
+
+    /* Icones */
+    .icons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 20px auto;
+    }
+
+    .icons div {
+        margin: 10px 0;
+    }
+
+    .icons img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Contenu */
+    .content p {
+        margin: 15px 0;
+    }
+
+    .content hr {
+        width: 90%;
+    }
+
+    /* Footer */
+    footer {
+        padding: 15px;
+    }
+
+    footer img {
+        width: 20px;
+    }
+
+    /* Boutons */
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    /* Deuxième partie */
+    #ndpart {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #menu-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        align-self: flex-end;
+        margin: 10px;
+        display: none;
+        /* Masqué par défaut */
+    }
+
+    #menu-items.show #menu-close {
+        display: block;
+        /* Affiché seulement lorsque le menu est ouvert */
+    }
+
+}

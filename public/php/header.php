@@ -39,20 +39,30 @@ $pageTitle = isset($menuItems[$currentPage]) ? "L'Entre-2-Traits | " . $menuItem
     </header>
 
     <!-- Navigation -->
+
+    <!-- Navigation -->
     <nav>
-        <?php
-        foreach ($menuItems as $page => $label) {
-            if ($currentPage === $page) {
-                echo "<a href='./$page.php'><span class='page'>$label</span></a>";
-            } else {
-                echo "<a href='./$page.php'>$label</a>";
+        <button id="menu-toggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+        <div id="menu-items">
+            <button id="menu-close">✖</button>
+
+            <?php
+            foreach ($menuItems as $page => $label) {
+                if ($currentPage === $page) {
+                    echo "<a href='./$page.php'><span class='page'>$label</span></a>";
+                } else {
+                    echo "<a href='./$page.php'>$label</a>";
+                }
             }
-        }
-        ?>
-        <a href="./manager.php" id="manager-link" style="display: none; background-color: #656d76">
-            <span class='page'>Manager</span>
-        </a>
-        <span class="panier-link"></span>
-        <img src="../img/panier.png" alt="panier" class="panier">
-        <span class="nombre-articles-panier" id="panier-bulle">0</span>
+            ?>
+            <a href="./manager.php" id="manager-link" style="display : none; background-color: #656d76">
+                <span class='page'>Manager</span>
+            </a>
+            <div class="panier-container">
+                <img src="../img/panier.png" alt="panier" class="panier">
+                <span class="nombre-articles-panier" id="panier-bulle">0</span>
+            </div>
+        </div>
     </nav>
