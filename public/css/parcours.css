@@ -24,3 +24,29 @@
     width: 40%;
 
 }
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    #roww {
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
+
+    #roww section {
+        width: 80%;
+        background-color: aliceblue;
+        padding: 20px;
+    }
+
+    .coll {
+        gap: 10px;
+    }
+
+    .coll>img {
+        width: 300px;
+    }
+
+    .coll>button {
+        width: 80%;
+    }
+}

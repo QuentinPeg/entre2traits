@@ -169,7 +169,7 @@ button:hover {
     flex-direction: row;
 }
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 
     /* Body */
     body {
@@ -253,7 +253,7 @@ button:hover {
     }
 
     #img_accueil {
-        width: 100%;
+        max-width: 90vw;
     }
 
     /* Icones */

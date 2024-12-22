@@ -28,11 +28,14 @@ async function displayArticles(articles) {
 
         const articleHTML = `
     <div class="atelier">
-        <div>
+        <div id="interventions_ordi">
             <img src="${article.image_url}" class="img-atelier" alt="Image de l'atelier">
         </div>
-        <div>
+        <div id="centrer_phone">
             <h2 class="titre-atelier">${article.titre}</h2>
+             <div id="interventions_phone">
+                <img src="${article.image_url}" class="img-atelier" alt="Image de l'atelier">
+            </div>
             <p class="description-atelier">${article.description.replace(/\n/g, '<br>')}</p>
             <a href="${article.lien}" class="lien_atelier"><button>Dossier de présentation</button></a>
         </div>
