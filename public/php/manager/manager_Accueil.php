@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
-    $target_dir = "../img/"; // Dossier de destination des images
+    $target_dir = "../../img/"; // Dossier de destination des images
     $target_file = $target_dir . basename($_FILES["image_upload"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -41,19 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager - Accueil</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/manager_accueil.css">
-    <script type="module" src="../js/supabase.js"></script>
+    <link rel="icon" href="../../img/logo.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/manager_accueil.css">
+    <script type="module" src="../../js/supabase.js"></script>
 </head>
 
 <body>
 
-    <?php include "./header.php"; ?>
+    <?php include "./header_manager.php"; ?>
 
     <main>
         <section class="main-section">
             <h1 id="page_title">Gestion de l'Accueil</h1>
-            <a href="./manager.php"><button>Retour</button></a>
+            <a href="../manager/manager.php"><button>Retour</button></a>
 
             <form id="form_Accueil" method="POST">
                 <div class="manager-icons">
@@ -123,12 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
 
                 <div class="carrousel-container">
                     <h2>Carrousels</h2>
-                    <p style="color:red">Séparé les liens d'images par des "<span style="font:bold;">,</span>"  dans le carrousel</p>
+                    <p style="color:red">Séparé les liens d'images par des "<span style="font:bold;">,</span>" dans le
+                        carrousel</p>
                     <div id="contient_carrousel">
-                        <div class="carrousel" style="display :none;"><!--EST LA POUR EMPECHER UN BUG, N'APPARAIT PAS-->
-                            <label for="carrousel_images">Est juste la pour empêche de bug</label>
-                            <textarea id="carrousel_images" name="carrousel_images" rows="3"></textarea>
-                        </div>
                         <div class="carrousel">
                             <label for="carrousel1_images">Images Carrousel 1 (séparées par des virgules) :</label>
                             <textarea id="carrousel1_images" name="carrousel1_images" rows="3"></textarea>
@@ -142,45 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image_upload'])) {
 
                 <button id="save_button" type="submit">Enregistrer les Modifications</button>
             </form>
-            <div class="div_image">
-                <form id="form_Accueil" method="POST" enctype="multipart/form-data">
-                    <!-- Autres sections de formulaire ici... -->
 
-                    <div class="image-upload-section">
-                        <h2>Ajouter une Image</h2>
-                        <label for="image_upload">Sélectionnez une image :</label>
-                        <input type="file" id="image_upload" name="image_upload" accept="image/*"><br>
-                        <button type="submit" id="upload_button">Envoyer l'image</button>
-                    </div>
-                </form>
-                <?php
-                // Récupération des images dans le dossier ../img/
-                $dir = "../img/";
-                $images = glob($dir . "*.{jpg,jpeg,png,gif,ico,webp,avif}", GLOB_BRACE); // Liste des images dans le dossier
-                ?>
-
-                <!-- Aperçu des images dans le dossier ../img/ -->
-                <div class="image-preview">
-                    <h3>Aperçu des Images</h3>
-                    <div class="image-gallery">
-                        <?php
-                        // Affichage des images et des liens
-                        foreach ($images as $image) {
-                            $imageName = basename($image);
-                            echo "<div class='image-item'>";
-                            echo "<img src='" . $image . "' alt='Image' class='img-preview'>";
-                            echo "<p><strong>Lien:</strong> ../img/" . $imageName . "</p>";
-                            echo "</div>";
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
+            <!-- Aperçu des images dans le dossier ../../img/ -->
+            <?php include "./view.img.directory.php"; ?>
 
         </section>
     </main>
 
-    <?php include "./footer.php"; ?>
+    <?php include "./footer_manager.php"; ?>
     <script>
         let currentRecordId = null;
 

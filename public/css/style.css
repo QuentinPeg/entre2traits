@@ -11,7 +11,7 @@ main {
     background-repeat: repeat;
     background-position: center;
     background-size: contain;
-
+    overflow-y: hidden;
 }
 
 /* Header */
@@ -54,6 +54,7 @@ nav>span {
     width: 50px;
 }
 
+/*souligne la page en cours*/
 .page {
     text-decoration: underline;
 }
@@ -160,14 +161,49 @@ button:hover {
     justify-content: center;
     gap: 50px;
 }
-#menu-toggle, #menu-close {
+
+#menu-toggle,
+#menu-close {
     display: none;
 }
 
-#menu-items{
+#menu-items {
     display: flex;
     flex-direction: row;
 }
+
+textarea {
+    max-width: 75vw;
+    max-height: 30vh;
+    min-width: 10vw;
+    min-height: 50px;
+}
+
+/* Style pour le toaster */
+#toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsl(218, 40%, 81%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1000;
+}
+
+/*apparition du message de lien copié */
+#toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
 /* Responsive styles */
 @media (max-width: 1200px) {
 
@@ -208,6 +244,7 @@ button:hover {
         padding: 10px 0;
     }
 
+    /* Format téléphone disposition des items */
     #menu-items.show {
         display: flex;
     }

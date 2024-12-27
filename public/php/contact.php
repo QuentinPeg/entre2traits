@@ -45,9 +45,9 @@
             </form>
         </section>
 
-        <section class="map-section">
+        <!--<section class="map-section">
             <div id="map"></div>
-        </section>
+        </section>-->
     </section>
 
 

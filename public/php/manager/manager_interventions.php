@@ -1,11 +1,11 @@
 <!-- Header -->
 
-<?php include "./header.php"; ?>
-<link rel="stylesheet" href="../css/manager_interventions.css">
+<?php include "./header_manager.php"; ?>
+<link rel="stylesheet" href="../../css/manager_interventions.css">
 
 <main>
     <h1>Gestion des interventions</h1>
-    <a href="./manager.php"><button>Retour</button></a>
+    <a href="../manager/manager.php"><button>Retour</button></a>
     <!-- Formulaire pour ajouter un article -->
     <form id="article-form">
         <h2>Ajouter un Article dans interventions</h2>
@@ -52,8 +52,7 @@
 </main>
 
 <!-- Footer -->
-<?php include "./footer.php"; ?>
+<?php include "./footer_manager.php"; ?>
 
 
-<script src="../js/connection.js"></script>
-<script src="../js/manager_interventions.js"></script>
+<script src="../../js/manager_interventions.js"></script>

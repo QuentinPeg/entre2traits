@@ -18,7 +18,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         }
 
         // Si la connexion réussie, redirection vers la page d'accueil ou page manager
-        window.location.href = './manager.php';  // Page manager après connexion réussie
+        window.location.href = './manager/manager.php';  // Page manager après connexion réussie
 
     } catch (error) {
         document.getElementById('error-message').textContent = 'Erreur de connexion: ' + error.message;

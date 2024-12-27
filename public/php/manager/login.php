@@ -1,8 +1,8 @@
 <!-- Header -->
 
-<?php include "./header.php"; ?>
+<?php include "../header.php"; ?>
 
-<link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="../../css/login.css">
 
 <main>
     <h1>Connexion</h1>
@@ -23,6 +23,6 @@
 </main>
 
 <!-- Footer -->
-<?php include "./footer.php"; ?>
+<?php include "../footer.php"; ?>
 
-<script src="../js/login.js"></script>
+<script src="../../js/login.js"></script>

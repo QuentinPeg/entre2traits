@@ -26,10 +26,11 @@ body {
     border-radius: 5px;
     margin-bottom: 20px;
 }
-#contient_carrousel{
+
+#contient_carrousel {
     display: flex;
     flex-direction: row;
-    
+
 }
 
 .icon-form {
@@ -63,10 +64,10 @@ button:hover {
     }
 }
 
-.div_image{
+.div_image {
     display: flex;
     flex-direction: row;
-    gap :5%;
+    gap: 5%;
     background-color: rgba(201, 205, 201, 0.75);
 
 }
@@ -97,5 +98,16 @@ button:hover {
 
 .image-item>p {
     font: normal normal normal 10px / 1.4em 'chelsea market', fantasy;
+
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+
+    #contient_carrousel,
+    .carrousel, .div_image {
+        display: flex;
+        flex-direction: column;
+    }
 
 }

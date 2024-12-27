@@ -1,14 +1,17 @@
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap : 5vh;
+    gap: 5vh;
     min-height: 60vh;
 }
 
-.deux_boutons{
-    display: flex;
-    flex-direction: row;
-    gap: 10vw;
+.boutons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 colonnes */
+    gap: 20px;
+    /* Espace entre les éléments de la grille */
+    text-align: center;
 }

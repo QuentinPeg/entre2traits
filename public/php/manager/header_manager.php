@@ -25,17 +25,17 @@ $pageTitle = isset($menuItems[$currentPage]) ? "L'Entre-2-Traits | " . $menuItem
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $pageTitle; ?></title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../img/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/carrousel.css">
+    <link rel="stylesheet" href="../../css/manager_general.css">
 </head>
 
 <body>
 
     <!-- Header -->
     <header>
-        <img src="../img/logo.webp" alt="Logo L'Entre 2 Traits">
+        <img src="../../img/logo.webp" alt="Logo L'Entre 2 Traits">
     </header>
 
     <!-- Navigation -->
@@ -51,17 +51,17 @@ $pageTitle = isset($menuItems[$currentPage]) ? "L'Entre-2-Traits | " . $menuItem
             <?php
             foreach ($menuItems as $page => $label) {
                 if ($currentPage === $page) {
-                    echo "<a href='./$page.php'><span class='page'>$label</span></a>";
+                    echo "<a href='../$page.php'><span class='page'>$label</span></a>";
                 } else {
-                    echo "<a href='./$page.php'>$label</a>";
+                    echo "<a href='../$page.php'>$label</a>";
                 }
             }
             ?>
-            <a href="./manager/manager.php" id="manager-link" style="display : none; background-color: #656d76">
+            <a href="./manager.php" id="manager-link" style="display : none; background-color: #656d76">
                 <span class='page'>Manager</span>
             </a>
             <div class="panier-container">
-                <img src="../img/panier.png" alt="panier" class="panier">
+                <img src="../../img/panier.png" alt="panier" class="panier">
                 <span class="nombre-articles-panier" id="panier-bulle">0</span>
             </div>
         </div>

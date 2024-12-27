@@ -1,8 +1,10 @@
-#article-form {
+#article-form,
+#actus-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 100%;
 }
 
 /* Titre du formulaire */
@@ -54,13 +56,16 @@ form textarea {
 
 /* Messages de statut pour l'upload et l'ajout d'article */
 #upload-status,
-#article-status {
+#article-status,
+#actus-status {
     margin-top: 10px;
     font-size: 14px;
     color: #d00
 }
 
-#articles-container {
+#articles-container,
+#actus-container {
     background-color: rgba(201, 205, 201, 0.75);
     /* Vert avec faible opacité */
+    min-width: 95vw;
 }
