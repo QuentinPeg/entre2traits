@@ -1,93 +1,79 @@
 body {
+    background-color: #f4f4f4;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    padding: 0
 }
 
 .container {
-    width: 90%;
-    margin: 20px auto;
     background: #fff;
-    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%
 }
 
 h1 {
-    text-align: center;
     color: #333;
+    text-align: center
 }
 
 .table-wrapper {
-    overflow-x: auto;
     margin-top: 20px;
+    overflow-x: auto
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    width: 100%
 }
 
 table th,
 table td {
-    padding: 12px 15px;
     border: 1px solid #ddd;
-    text-align: left;
+    padding: 12px 15px;
+    text-align: left
 }
 
 table th {
     background-color: #007BFF;
-    color: #fff;
+    color: #fff
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2
 }
 
 button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
     background-color: #007BFF;
+    border-radius: 5px;
+    border: none;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
+    padding: 10px 15px;
+    transition: background-color 0.3s
 }
 
 .image-gallery {
+    background-color: rgba(201, 205, 201, 0.75);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px;
-    background-color: rgba(201, 205, 201, 0.75);
-
-}
-.img-preview {
-    min-width: 100px;
-    max-width: 100px;
-    min-height: 100px;
-    max-height: 100px;
-    object-fit: contain;
-
+    gap: 20px
 }
 
 button.delete {
     background-color: #dc3545;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
     border-radius: 5px;
+    border: none;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 10px 15px;
+    transition: background-color 0.3s
 }
 
 button.delete:hover {
-    background-color: #a71d2a;
+    background-color: #a71d2a
 }
-

@@ -1,113 +1,90 @@
 body {
+    background-color: #f9f9f9;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+    padding: 0
 }
 
 .main-section {
-    padding: 20px;
-    max-width: 1200px;
     margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px
 }
 
 .manager-icons {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between
 }
 
 .icon-form,
 .content,
 .carrousel {
     background: #fff;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    padding: 15px
 }
 
 #contient_carrousel {
     display: flex;
-    flex-direction: row;
-
+    flex-direction: row
 }
 
 .icon-form {
     flex: 1;
-    margin: 10px;
+    margin: 10px
 }
 
 button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
     background-color: #007BFF;
-    color: white;
-    border: none;
     border-radius: 5px;
+    border: none;
+    color: white;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
+    display: block;
+    font-size: 16px;
+    margin: 20px auto;
+    padding: 10px 20px
 }
 
 @media (max-width: 1200px) {
     .manager-icons {
-        flex-direction: column;
+        flex-direction: column
     }
 
     .icon-form {
-        margin: 10px 0;
+        margin: 10px 0
     }
 }
 
 .div_image {
+    background-color: rgba(201, 205, 201, 0.75);
     display: flex;
     flex-direction: row;
-    gap: 5%;
-    background-color: rgba(201, 205, 201, 0.75);
-
+    gap: 5%
 }
 
 .inscription-section {
     background: #fff;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-}
-
-.image-gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.img-preview {
-    min-width: 100px;
-    max-width: 100px;
-    min-height: 100px;
-    max-height: 100px;
-    object-fit: contain;
-
+    padding: 15px
 }
 
 .image-item>p {
-    font: normal normal normal 10px / 1.4em 'chelsea market', fantasy;
-
+    font: normal normal normal 10px / 1.4em 'chelsea market', fantasy
 }
 
 /* Responsive styles */
 @media (max-width: 1200px) {
 
     #contient_carrousel,
-    .carrousel, .div_image {
+    .carrousel,
+    .div_image {
         display: flex;
-        flex-direction: column;
+        flex-direction: column
     }
-
 }

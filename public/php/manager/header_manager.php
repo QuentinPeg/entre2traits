@@ -28,7 +28,7 @@ $pageTitle = isset($menuItems[$currentPage]) ? "L'Entre-2-Traits | " . $menuItem
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" href="../../img/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/manager_general.css">
+    <link rel="stylesheet" href="../../css/style_manager.css">
 </head>
 
 <body>

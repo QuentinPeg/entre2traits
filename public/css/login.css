@@ -1,17 +1,18 @@
-main{
-    min-height: 80vh;
+main {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 50px;
+    min-height: 80vh
 }
 
-#login-form, .col{
-    display: flex;
-    flex-direction: column;
+#login-form,
+.col {
     align-items: center;
+    display: flex;
+    flex-direction: column
 }
 
-#login-form{
-    gap: 30px;
+#login-form {
+    gap: 30px
 }

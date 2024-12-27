@@ -1,24 +1,24 @@
 #article-form,
 #actus-form {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-width: 100%;
+    min-width: 100%
 }
 
 /* Titre du formulaire */
 h2 {
-    text-align: center;
     color: #333;
     margin-bottom: 20px;
+    text-align: center
 }
 
 main {
-    min-height: 100vh;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh
 }
 
 /* Styles pour les inputs du formulaire */
@@ -26,46 +26,46 @@ form input[type="text"],
 form input[type="date"],
 form input[type="file"],
 form textarea {
-    width: 500px;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
     box-sizing: border-box;
+    color: #333;
     font-family: inherit;
     font-size: 16px;
-    color: #333;
+    margin: 10px 0;
+    padding: 12px;
+    width: 500px
 }
 
 /* Mise en forme du bouton d'upload */
 #upload-button {
-    display: inline-block;
-    padding: 10px 20px;
     background-color: #5a9;
-    color: white;
-    border: none;
     border-radius: 5px;
+    border: none;
+    color: white;
     cursor: pointer;
+    display: inline-block;
     font-family: inherit;
     margin-bottom: 10px;
+    padding: 10px 20px
 }
 
 #upload-button:hover {
-    background-color: #489;
+    background-color: #489
 }
 
 /* Messages de statut pour l'upload et l'ajout d'article */
 #upload-status,
 #article-status,
 #actus-status {
-    margin-top: 10px;
+    color: #d00;
     font-size: 14px;
-    color: #d00
+    margin-top: 10px
 }
 
 #articles-container,
 #actus-container {
-    background-color: rgba(201, 205, 201, 0.75);
     /* Vert avec faible opacité */
     min-width: 95vw;
+    background-color: rgba(201, 205, 201, 0.75)
 }
