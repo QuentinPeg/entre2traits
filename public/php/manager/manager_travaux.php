@@ -7,7 +7,6 @@
     <script type="module" src="../../js/supabase.js"></script>
 </head>
 
-
 <?php include "./header_manager.php"; ?>
 
 <main>
@@ -15,16 +14,21 @@
         <h1 id="page_title">Gestion de la page de travaux</h1>
         <a href="../manager/manager.php"><button>Retour</button></a>
 
+        <label for="content_type">Choisir le type de contenu:</label>
+        <select id="content_type" name="content_type">
+            <option value="images">Images</option>
+            <option value="videos">Vidéos</option>
+        </select>
+
         <form id="form_travaux" method="POST">
             <h2>Ajouter un carousel</h2>
             <label for="carousel_title">Titre du carousel:</label>
             <input type="text" id="carousel_title" name="carousel_title" required>
 
-            <p style="color:red">Séparé les liens d'images par des "<span style="font:bold;">,</span>" dans
-                le carrousel
-            </p>
-            <label for="carousel_images">Liens des images du carousel :</label>
-            <textarea id="carousel_images" name="carousel_images" rows="4" required></textarea>
+            <p style="color:red">Séparé les liens d'images/vidéos par des "<span style="font:bold;">,</span>" dans le
+                carrousel</p>
+            <label for="carousel_content">Liens des images/vidéos du carousel :</label>
+            <textarea id="carousel_content" name="carousel_content" rows="4" required></textarea>
 
             <button type="submit">Ajouter le carousel</button>
         </form>
@@ -37,10 +41,8 @@
 
     </section>
 
-
     <!-- Modal pour la modification du carousel -->
     <div id="editModal" class="modal">
-
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="modal-content-content">
@@ -48,8 +50,9 @@
                 <label for="edit_carousel_title">Titre du carousel:</label>
                 <input type="text" id="edit_carousel_title" name="edit_carousel_title" required>
 
-                <label for="edit_carousel_images">Liens des images du carousel (séparés par des virgules):</label>
-                <textarea id="edit_carousel_images" name="edit_carousel_images" rows="4" required></textarea>
+                <label for="edit_carousel_content">Liens des images/vidéos du carousel (séparés par des
+                    virgules):</label>
+                <textarea id="edit_carousel_content" name="edit_carousel_content" rows="4" required></textarea>
 
                 <button id="saveChanges">Enregistrer les modifications</button>
             </div>
@@ -59,7 +62,6 @@
 
 <!-- Modal pour la confirmation de suppression -->
 <div id="deleteModal" class="modal">
-
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="modal-content-content">
@@ -70,22 +72,28 @@
                 <button id="cancelDelete">Non</button>
             </div>
         </div>
-
     </div>
 </div>
+
+
+
+
+
+
+
 <?php include "./footer_manager.php"; ?>
 
 <script>
-
     document.getElementById('form_travaux').addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const title = document.getElementById('carousel_title').value;
-        const images = document.getElementById('carousel_images').value.split(',').map(img => img.trim());
+        const contentType = document.getElementById('content_type').value;
+        const content = document.getElementById('carousel_content').value.split(',').map(item => item.trim());
 
         const { error } = await supabaseClient
             .from('travaux')
-            .insert([{ title: title, images: images }]);
+            .insert([{ title: title, type: contentType, content: content }]);
 
         if (error) {
             console.error('Erreur lors de l\'ajout du carousel:', error);
@@ -114,8 +122,8 @@
             carouselDiv.className = 'carousel-item';
             carouselDiv.innerHTML = `
                     <h3>${carousel.title}</h3>
-                    <div class="carousel-images">
-                        ${carousel.images.map(img => `<img src="../${img}"" alt="Image du carousel">`).join('')}
+                    <div class="carousel-content">
+                        ${carousel.content.map(item => carousel.type === 'images' ? `<img src="../${item}" alt="Image du carousel">` : `<iframe src="${item}"></iframe>`).join('')}
                     </div>
                     <button onclick="editCarousel(${carousel.id})">Modifier</button>
                     <button onclick="deleteCarousel(${carousel.id})">Supprimer</button>
@@ -139,7 +147,7 @@
 
         // Préremplir les champs du modal
         document.getElementById('edit_carousel_title').value = data.title;
-        document.getElementById('edit_carousel_images').value = data.images.join(',');
+        document.getElementById('edit_carousel_content').value = data.content.join(',');
 
         // Afficher le modal
         const modal = document.getElementById('editModal');
@@ -148,11 +156,11 @@
         // Enregistrer les modifications
         document.getElementById('saveChanges').onclick = async () => {
             const newTitle = document.getElementById('edit_carousel_title').value;
-            const newImages = document.getElementById('edit_carousel_images').value.split(',').map(img => img.trim());
+            const newContent = document.getElementById('edit_carousel_content').value.split(',').map(item => item.trim());
 
             const { error } = await supabaseClient
                 .from('travaux')
-                .update({ title: newTitle, images: newImages })
+                .update({ title: newTitle, content: newContent })
                 .eq('id', id);
 
             if (error) {
@@ -217,5 +225,10 @@
             editModal.style.display = 'none';
         }
     };
+
     loadCarousels();
 </script>
+
+
+
+

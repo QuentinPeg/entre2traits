@@ -17,9 +17,8 @@
             <h3>Des illustrations</h3>
             <div id="carousels_container"></div>
         </div>
+        <div id="sections_container"></div>
     </section>
-
-
 </main>
 
 <?php include "./footer.php"; ?>
@@ -46,42 +45,51 @@
             title.textContent = carousel.title;
             carouselDiv.appendChild(title);
 
-            const imagesDiv = document.createElement('div');
-            imagesDiv.className = 'carousel-images';
 
-            carousel.images.forEach(img => {
-                const imgElement = document.createElement('img');
-                imgElement.src = img;
-                imgElement.alt = 'Image du carrousel';
-                imagesDiv.appendChild(imgElement);
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'carousel-images';
+
+            carousel.content.forEach(item => {
+                if (carousel.type === 'images') {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = item;
+                    imgElement.alt = 'Image du carrousel';
+                    contentDiv.appendChild(imgElement);
+                } else if (carousel.type === 'videos') {
+                    const videoElement = document.createElement('iframe');
+                    videoElement.src = item;
+                    videoElement.controls = true;
+                    contentDiv.appendChild(videoElement);
+                }
             });
 
             const prevButton = document.createElement('button');
             prevButton.className = 'carousel-prev';
             prevButton.innerHTML = '&#10094;';
-            prevButton.onclick = () => scrollCarousel(imagesDiv, -1);
+            prevButton.onclick = () => scrollCarousel(contentDiv, -1);
 
             const nextButton = document.createElement('button');
             nextButton.className = 'carousel-next';
             nextButton.innerHTML = '&#10095;';
-            nextButton.onclick = () => scrollCarousel(imagesDiv, 1);
+            nextButton.onclick = () => scrollCarousel(contentDiv, 1);
 
             carouselDiv.appendChild(prevButton);
-            carouselDiv.appendChild(imagesDiv);
+            carouselDiv.appendChild(contentDiv);
             carouselDiv.appendChild(nextButton);
             carouselsContainer.appendChild(carouselDiv);
         });
     }
 
     function scrollCarousel(container, direction) {
-        const images = container.querySelectorAll('img');
-        const scrollAmount = images[0].clientWidth + 16; // 16px is the gap between images
+        const items = container.querySelectorAll('img, iframe');
+        const scrollAmount = items[0].clientWidth + 16; // 16px is the gap between items
 
         if (direction === 1) {
             container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             setTimeout(() => {
                 container.style.scrollBehavior = 'auto';
-                container.appendChild(images[0]);
+                container.appendChild(items[0]);
                 container.scrollLeft -= scrollAmount;
                 container.style.scrollBehavior = 'smooth';
             }, 300);
@@ -89,7 +97,7 @@
             container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             setTimeout(() => {
                 container.style.scrollBehavior = 'auto';
-                container.prepend(images[images.length - 1]);
+                container.prepend(items[items.length - 1]);
                 container.scrollLeft += scrollAmount;
                 container.style.scrollBehavior = 'smooth';
             }, 300);
