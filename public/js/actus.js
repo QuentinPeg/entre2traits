@@ -24,29 +24,26 @@ async function displayactus(actus) {
             continue;
         }
 
-
-
         const actuHTML = `
-    <div class="atelier">
-        <div id="interventions_ordi">
-            <img src="${actu.image_url}" class="img-atelier" alt="Image de l'atelier">
-        </div>
-        <div id="centrer_phone">
-            <h2 class="titre-atelier">${actu.titre}</h2>
-             <div id="interventions_phone">
+        <div class="atelier">
+            <div id="interventions_ordi">
                 <img src="${actu.image_url}" class="img-atelier" alt="Image de l'atelier">
             </div>
-            <p class="description-atelier">${actu.description.replace(/\n/g, '<br>')}</p>
-            <a href="${actu.lien}" class="lien_atelier"><button>Dossier de présentation</button></a>
+            <div id="centrer_phone">
+                <h2 class="titre-atelier">${actu.titre}</h2>
+                <p class="date-atelier">${new Date(actu.date).toLocaleDateString()}</p>
+                <div id="interventions_phone">
+                    <img src="${actu.image_url}" class="img-atelier" alt="Image de l'atelier">
+                </div>
+                <p class="description-atelier">${actu.description.replace(/\n/g, '<br>')}</p>
+            </div>
         </div>
-    </div>
-`;
+        `;
 
         // Ajouter chaque actu dans le main
         main.insertAdjacentHTML('beforeend', actuHTML);
     }
 }
-
 
 // Charger les actus dès que la page est prête
 document.addEventListener('DOMContentLoaded', fetchactus);

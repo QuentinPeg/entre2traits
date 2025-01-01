@@ -1,51 +1,120 @@
-#roww {
-        align-items: center;
+/* Reset de base */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+img,
+article,
+div,
+section,
+main {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0
+}
+
+body {
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0
+}
+
+/* Structure principale */
+main {
         display: flex;
         flex-direction: row;
-        justify-content: center
-}
-
-#roww section {
-        width: 40%
-}
-
-.coll {
+        justify-content: center;
         align-items: center;
+        padding: 20px 10px;
+        gap :50px;
+}
+
+.st-div {
         display: flex;
         flex-direction: column;
-        gap: 50px
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
 }
 
-.coll>img {
-        width: 500px
+.nd-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
 }
 
-.coll>button {
-        width: 40%
+button {
+        background-color: #007BFF;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        margin: 20px auto;
+        padding: 10px 20px;
+}
+a{
+        text-decoration: none;
+
 }
 
-/* Responsive styles */
+
+h4#parcours-titre {
+        font-size: 24px;
+        margin-bottom: 20px;
+}
+
+#parcours-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+}
+
+#parcours-lien button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 5px;
+}
+
+#parcours-lien button:hover {
+        background-color: #0056b3;
+}
+
+#parcours-description {
+        font-size: 16px;
+        margin-top: 20px;
+}
+
+
+/* Styles pour les écrans de téléphone */
 @media (max-width: 1200px) {
-        #roww {
-                flex-direction: column;
-                flex-flow: column-reverse
+        main {
+                padding: 10px;
         }
 
-        #roww section {
-                background-color: aliceblue;
-                padding: 20px;
-                width: 80%
+        h4#parcours-titre {
+                font-size: 20px;
         }
 
-        .coll {
-                gap: 10px
+        #parcours-lien button {
+                font-size: 16px;
+                padding: 10px 15px;
         }
 
-        .coll>img {
-                width: 300px
-        }
-
-        .coll>button {
-                width: 80%
+        #parcours-description {
+                font-size: 14px;
         }
 }

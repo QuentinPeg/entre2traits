@@ -23,6 +23,8 @@
                 <!-- Les points seront injectés ici -->
             </ul>
             <p id="atelier-location">Chargement...</p>
+            <p id="contact-info">Chargement...</p>
+
         </div>
 
         <div class="atelier-right">

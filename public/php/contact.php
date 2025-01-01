@@ -2,18 +2,13 @@
 
 <?php include "./header.php"; ?>
 <link rel="stylesheet" href="../css/contact.css">
-
 <main>
-
     <section id="main-contact">
         <h1>Contact</h1>
         <section>
-            <p>L'Entre 2 Traits <br>
-                Frédéric Masson-villot</p>
-            <p>18 bis rue Ponsard <br>
-                38100 Grenoble <br>
-                06 13 21 20 27
-            </p>
+            <p id="contact-address">Chargement...</p>
+            <p id="contact-info">Chargement...</p>
+
         </section>
         <section class="contact-form">
             <form action="#" method="post">
@@ -44,14 +39,8 @@
                 <button type="submit">Envoyer</button>
             </form>
         </section>
-
-        <!--<section class="map-section">
-            <div id="map"></div>
-        </section>-->
     </section>
-
-
-
 </main>
 <!-- Footer -->
 <?php include "./footer.php"; ?>
+<script src="../js/contact.js"></script>

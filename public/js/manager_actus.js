@@ -68,11 +68,11 @@ document.getElementById('actus-image').addEventListener('change', function () {
 });
 
 // Fonction pour ajouter un nouvel actus
-async function addactus(title, description, link, imageUrl) {
+async function addactus(title, description, imageUrl, date) {
     try {
         const { data, error } = await supabaseClient
             .from('actus')
-            .insert([{ image_url: imageUrl, titre: title, description: description, lien: link }]);
+            .insert([{ image_url: imageUrl, titre: title, description: description, date: date }]);
 
         if (error) throw error;
 
@@ -84,6 +84,27 @@ async function addactus(title, description, link, imageUrl) {
         document.getElementById('actus-status').textContent = 'Erreur lors de l\'ajout de l\'actus.';
     }
 }
+
+// Gestion de l'événement de soumission du formulaire
+document.getElementById('actus-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const title = document.getElementById('actus-title').value;
+    const description = document.getElementById('actus-description').value;
+    const date = document.getElementById('actus-date').value; // Récupérer la date
+    const imageSelect = document.getElementById('actus-image');
+    Array.from(imageSelect.options).forEach((option, index) => {
+    });
+
+    const imageUrl = imageSelect.value; // Récupère directement la valeur sélectionnée
+
+    if (title && description && imageUrl && date) {
+        await addactus(title, description, imageUrl, date);
+    } else {
+        document.getElementById('actus-status').textContent = 'Veuillez remplir tous les champs.';
+        console.warn('Tous les champs ne sont pas remplis.');
+    }
+});
 
 // Fonction pour charger les actus existants
 async function loadactus() {
@@ -115,26 +136,6 @@ async function loadactus() {
     }
 }
 
-// Gestion de l'événement de soumission du formulaire
-document.getElementById('actus-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const title = document.getElementById('actus-title').value;
-    const description = document.getElementById('actus-description').value;
-    const link = document.getElementById('actus-link').value;
-    const imageSelect = document.getElementById('actus-image');
-    Array.from(imageSelect.options).forEach((option, index) => {
-    });
-
-    const imageUrl = imageSelect.value; // Récupère directement la valeur sélectionnée
-
-    if (title && description && link && imageUrl) {
-        await addactus(title, description, link, imageUrl);
-    } else {
-        document.getElementById('actus-status').textContent = 'Veuillez remplir tous les champs.';
-        console.warn('Tous les champs ne sont pas remplis.');
-    }
-});
 // Fonction pour uploader une image
 async function uploadImage(file) {
     const fileName = `${Date.now()}_${file.name}`;  // Générer un nom de fichier unique

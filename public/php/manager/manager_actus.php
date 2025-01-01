@@ -8,9 +8,9 @@
     <a href="../manager/manager.php"><button>Retour</button></a>
 
     <form id="actus-form" method="POST">
-
         <h2>Ajouter un actus dans actus</h2>
         <input type="text" id="actus-title" placeholder="Titre" required>
+        <input type="date" id="actus-date" placeholder="Date" required> <!-- Nouveau champ de date -->
 
         <!-- Sélection d'image existante -->
         <label for="actus-image">Sélectionner une image</label>
@@ -21,11 +21,9 @@
         <img id="selectedImage" src="" alt="Image sélectionnée" style="display:none;" />
 
         <textarea id="actus-description" placeholder="Description" required></textarea>
-        <input type="text" id="actus-link" placeholder="Lien" required>
         <button type="submit">Ajouter l'actus</button>
         <p id="actus-status"></p>
     </form>
-
     <!-- Formulaire pour gérer les images -->
     <section>
         <h2>Gestion des Images</h2>
@@ -57,4 +55,3 @@
 
 
 <script src="../../js/manager_actus.js"></script>
-

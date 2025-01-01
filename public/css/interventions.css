@@ -1,16 +1,71 @@
-main { align-items: center; display: flex; flex-direction: column; justify-content: center }
-.atelier { align-items: center; background-color: white; border-radius: 5px; border: 2px solid #444; display: flex; flex-direction: row; gap: 50px; justify-content: center; margin: 10px; min-width: 300px; padding: 10px }
-#interventions_phone { display: none }
-#interventions_ordi { display: block }
-/* Responsive styles */
-@media (max-width: 1200px) { .atelier {
-        gap: 10px }
-#centrer_phone { align-items: center; display: flex; flex-direction: column; justify-content: center }
-#interventions_phone { display: block }
-#interventions_ordi { display: none }
-.atelier p { width: auto !important }
+main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
 }
 
-.atelier img { border-radius: 10px; max-height: 192px }
-.atelier h2 { font-size: 1.5em; margin-top: 20px }
-.atelier p { font-size: small; line-height: 1.6; margin-bottom: 10px; width: 500px }
+.atelier {
+        align-items: center;
+        background-color: white;
+        border-radius: 5px;
+        border: 2px solid #444;
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        justify-content: center;
+        margin: 10px;
+        min-width: 300px;
+        padding: 10px
+}
+
+#interventions_phone {
+        display: none
+}
+
+#interventions_ordi {
+        display: block
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+        .atelier {
+                gap: 10px
+        }
+
+        #centrer_phone {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center
+        }
+
+        #interventions_phone {
+                display: block
+        }
+
+        #interventions_ordi {
+                display: none
+        }
+
+        .atelier p {
+                width: auto !important
+        }
+}
+
+.atelier img {
+        border-radius: 10px;
+        max-height: 192px
+}
+
+.atelier h2 {
+        font-size: 1.5em;
+        margin-top: 20px
+}
+
+.atelier p {
+        font-size: small;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        width: 500px
+}
