@@ -25,8 +25,10 @@
             <label for="carousel_title">Titre du carousel:</label>
             <input type="text" id="carousel_title" name="carousel_title" required>
 
-            <p style="color:red">Séparé les liens d'images/vidéos par des "<span style="font:bold;">,</span>" dans le
-                carrousel</p>
+            <label for="section_name">Nom de la section:</label>
+            <input type="text" id="section_name" name="section_name" required>
+
+            <p style="color:red">Séparé les liens d'images/vidéos par des "<span style="font:bold;">,</span>" dans le carrousel</p>
             <label for="carousel_content">Liens des images/vidéos du carousel :</label>
             <textarea id="carousel_content" name="carousel_content" rows="4" required></textarea>
 
@@ -50,8 +52,10 @@
                 <label for="edit_carousel_title">Titre du carousel:</label>
                 <input type="text" id="edit_carousel_title" name="edit_carousel_title" required>
 
-                <label for="edit_carousel_content">Liens des images/vidéos du carousel (séparés par des
-                    virgules):</label>
+                <label for="edit_section_name">Nom de la section:</label>
+                <input type="text" id="edit_section_name" name="edit_section_name" required>
+
+                <label for="edit_carousel_content">Liens des images/vidéos du carousel (séparés par des virgules):</label>
                 <textarea id="edit_carousel_content" name="edit_carousel_content" rows="4" required></textarea>
 
                 <button id="saveChanges">Enregistrer les modifications</button>
@@ -75,12 +79,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
 <?php include "./footer_manager.php"; ?>
 
 <script>
@@ -89,11 +87,12 @@
 
         const title = document.getElementById('carousel_title').value;
         const contentType = document.getElementById('content_type').value;
+        const sectionName = document.getElementById('section_name').value;
         const content = document.getElementById('carousel_content').value.split(',').map(item => item.trim());
 
         const { error } = await supabaseClient
             .from('travaux')
-            .insert([{ title: title, type: contentType, content: content }]);
+            .insert([{ title: title, type: contentType, section: sectionName, content: content }]);
 
         if (error) {
             console.error('Erreur lors de l\'ajout du carousel:', error);
@@ -147,6 +146,7 @@
 
         // Préremplir les champs du modal
         document.getElementById('edit_carousel_title').value = data.title;
+        document.getElementById('edit_section_name').value = data.section;
         document.getElementById('edit_carousel_content').value = data.content.join(',');
 
         // Afficher le modal
@@ -156,11 +156,12 @@
         // Enregistrer les modifications
         document.getElementById('saveChanges').onclick = async () => {
             const newTitle = document.getElementById('edit_carousel_title').value;
+            const newSection = document.getElementById('edit_section_name').value;
             const newContent = document.getElementById('edit_carousel_content').value.split(',').map(item => item.trim());
 
             const { error } = await supabaseClient
                 .from('travaux')
-                .update({ title: newTitle, content: newContent })
+                .update({ title: newTitle, section: newSection, content: newContent })
                 .eq('id', id);
 
             if (error) {
@@ -228,7 +229,3 @@
 
     loadCarousels();
 </script>
-
-
-
-
