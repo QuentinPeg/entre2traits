@@ -1,7 +1,7 @@
 *.env
 vendor/
 *.docx
-test/
+tests/
 phpunit.xml
 composer.lock
 composer.json
