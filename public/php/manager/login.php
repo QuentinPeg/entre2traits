@@ -1,6 +1,6 @@
 <!-- Header -->
 
-<?php include "../header.php"; ?>
+<?php include "./header_manager.php"; ?>
 
 <link rel="stylesheet" href="../../css/login.css">
 
@@ -23,6 +23,6 @@
 </main>
 
 <!-- Footer -->
-<?php include "../footer.php"; ?>
+<?php include "./footer_manager.php"; ?>
 
 <script src="../../js/login.js"></script>
