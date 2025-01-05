@@ -8,11 +8,18 @@ img {
     border-radius: 50%;
 }
 
-#form_travaux {
+.main-section,
+#form_travaux,
+#form_buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#form_travaux,
+#form_buttons {
+    gap: 1rem;
 }
 
 .carousel-images {

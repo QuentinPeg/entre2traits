@@ -6,6 +6,25 @@
 
 }
 
+.buttons {
+    display: grid;
+    gap: 1rem;
+}
+
+.buttons.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.buttons.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.button-image {
+    width: 100px;
+    object-fit: cover;
+    height: 100px;
+}
+
 /* les carroussels */
 .carousel {
     position: relative;
