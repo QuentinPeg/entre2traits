@@ -9,8 +9,16 @@ async function fetchactus() {
         return;
     }
 
+    const currentDate = new Date();
+
+    // Filtrer les actus pour exclure celles dont la date est dans le futur
+    const filteredActus = actus.filter(actu => new Date(actu.date) <= currentDate);
+
+    // Trier les actus par date dans l'ordre chronologique
+    filteredActus.sort((a, b) => new Date(b.date) - new Date(a.date));
+
     // Appel de la fonction pour afficher les actus
-    displayactus(actus);
+    displayactus(filteredActus);
 }
 
 // Fonction pour afficher les actus avec les images
@@ -31,7 +39,7 @@ async function displayactus(actus) {
             </div>
             <div id="centrer_phone">
                 <h2 class="titre-atelier">${actu.titre}</h2>
-                <p class="date-atelier">${new Date(actu.date).toLocaleDateString()}</p>
+                <p class="date-atelier"> Posté le : ${new Date(actu.date).toLocaleDateString()}</p>
                 <div id="interventions_phone">
                     <img src="${actu.image_url}" class="img-atelier" alt="Image de l'atelier">
                 </div>

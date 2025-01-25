@@ -1,3 +1,38 @@
+async function loadRecentActus() {
+    try {
+        const { data, error } = await supabaseClient
+            .from('actus')
+            .select('*')
+            .order('date', { ascending: false });
+
+        if (error) {
+            console.error("Erreur lors du chargement des actualités :", error);
+            return;
+        }
+
+        const currentDate = new Date();
+        let recentActus = null;
+
+        for (const actus of data) {
+            const actusDate = new Date(actus.date);
+            if (actusDate <= currentDate) {
+                recentActus = actus;
+                break;
+            }
+        }
+
+        if (recentActus) {
+            // Injecter les données de l'actualité la plus récente dans la page d'accueil
+            document.getElementById('current_info').textContent = recentActus.titre;
+            document.getElementById('img_accueil').src = recentActus.image_url;
+        } else {
+            console.warn("Aucune actualité récente disponible.");
+        }
+    } catch (error) {
+        console.error("Une erreur s'est produite :", error);
+    }
+}
+
 async function loadAccueilContent() {
     try {
         const { data, error } = await supabaseClient
@@ -13,8 +48,6 @@ async function loadAccueilContent() {
         // Injecter les données dynamiques dans la page
         document.getElementById('title').textContent = data.welcome_title;
         document.getElementById('welcome_message').textContent = data.welcome_message;
-        document.getElementById('current_info').textContent = data.current_info;
-        document.getElementById('img_accueil').src = data.welcome_img;
 
         // Icônes dynamiques
         const iconsHtml = `  
@@ -81,6 +114,9 @@ async function loadAccueilContent() {
         changeImage('carrousel1', carrousel1Images);
         changeImage('carrousel2', carrousel2Images);
 
+        // Charger l'actualité la plus récente
+        await loadRecentActus();
+
     } catch (error) {
         console.error("Une erreur s'est produite :", error);
     }
@@ -95,4 +131,3 @@ document.addEventListener('click', function (e) {
         largeImage.src = e.target.src;
     }
 });
-
